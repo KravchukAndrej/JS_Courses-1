@@ -16,8 +16,8 @@ exports.config = {
       show: true,
       browser: 'chromium',
       waitForNavigation: 'networkidle0',
-      waitForTimeout: 10000,
-      timeout: 10000,
+      waitForTimeout: 20000,
+      timeout: 20000,
     }
   },
   include: {
@@ -25,6 +25,7 @@ exports.config = {
     homePage: './pages/home.js',
     authPage: './pages/auth.js',
     createAccountPage: './pages/createAccount.js',
+    myAccountPage: './pages/myAccount.js',
   },
   bootstrap: null,
   mocha: {},
