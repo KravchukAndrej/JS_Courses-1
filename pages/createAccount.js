@@ -43,9 +43,7 @@ module.exports = {
     I.fillField(this.additionalInfoTextarea, user.additionalInfo);
     I.fillField(this.homePhoneInput, user.homePhone);
     I.fillField(this.mobilePhoneInput, user.mobilePhone);
-    I.click(this.regFormButton);
-
-    
+    I.click(this.regFormButton);    
     },
 
   waitForPageLoad() {
