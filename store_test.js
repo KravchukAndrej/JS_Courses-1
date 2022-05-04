@@ -17,12 +17,29 @@ let user = {
     mobilePhone:'+1 888-904-1932',    
     }
 
+let currentUser = {
+
+}
+
 Feature('Store');
 
-Scenario('test something', ({ I, homePage, authPage, createAccountPage, myAccountPage }) => {
+Scenario('form filling', ({ I, homePage, authPage, createAccountPage, myAccountPage }) => {
+    const currentEmail = Date.now() + '@test.com`'
     homePage.openStore();
     homePage.clickSignIn();
-    authPage.fillNewUserEmail(Date.now() + '@test.com');
+    authPage.fillNewUserEmail(currentEmail);
+    authPage.clickCreateAccount();
+    currentUser.email = currentEmail;
+    currentUser.password = 'Password1';
+    createAccountPage.fillNewUserForm(user);
+    myAccountPage.seeMyAccount();
+    pause();
+    
+});
+Scenario('choose a product', ({ I, homePage, authPage, createAccountPage, myAccountPage }) => {
+    homePage.openStore();
+    homePage.clickSignIn();
+    authPage.fillNewUserEmail(currentEmail);
     authPage.clickCreateAccount();
     createAccountPage.fillNewUserForm(user);
     myAccountPage.seeMyAccount();

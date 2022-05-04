@@ -1,8 +1,14 @@
+const { clickSignIn } = require("./home");
+
 const { I } = inject();
 
 module.exports = {
   newUserEmailInput: {css: '#email_create'},
   createAccountButton: {css: '#SubmitCreate'},
+  existUserEmailInput: {css: '#email'},
+  existUserPasswordInput: {css: '#passwd'},
+  signInButton: {css: '#SubmitLogin'},
+
 
   waitForPageLoad() {
     I.waitForVisible(this.newUserEmailInput);
@@ -15,5 +21,9 @@ module.exports = {
 
   clickCreateAccount() {
     I.click(this.createAccountButton);
-  }
+  },
+  fillExistUserEmail(){},
+  fillExistUserPassword(){},
+  clickSignInButton(){},
 }
+
