@@ -22,8 +22,5 @@ module.exports = {
   clickCreateAccount() {
     I.click(this.createAccountButton);
   },
-  fillExistUserEmail(){},
-  fillExistUserPassword(){},
-  clickSignInButton(){},
 }
 

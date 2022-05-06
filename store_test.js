@@ -15,31 +15,15 @@ let user = {
     additionalInfo: 'Some very closely information',
     homePhone: '+1 202-543-5155',
     mobilePhone:'+1 888-904-1932',    
+    
     }
-
-let currentUser = {
-
-}
 
 Feature('Store');
 
 Scenario('form filling', ({ I, homePage, authPage, createAccountPage, myAccountPage }) => {
-    const currentEmail = Date.now() + '@test.com`'
     homePage.openStore();
     homePage.clickSignIn();
-    authPage.fillNewUserEmail(currentEmail);
-    authPage.clickCreateAccount();
-    currentUser.email = currentEmail;
-    currentUser.password = 'Password1';
-    createAccountPage.fillNewUserForm(user);
-    myAccountPage.seeMyAccount();
-    pause();
-    
-});
-Scenario('choose a product', ({ I, homePage, authPage, createAccountPage, myAccountPage }) => {
-    homePage.openStore();
-    homePage.clickSignIn();
-    authPage.fillNewUserEmail(currentEmail);
+    authPage.fillNewUserEmail(Date.now() + '@test.com');
     authPage.clickCreateAccount();
     createAccountPage.fillNewUserForm(user);
     myAccountPage.seeMyAccount();
