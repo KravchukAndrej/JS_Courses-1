@@ -20,6 +20,7 @@ let user = {
 
 Feature('Store');
 
+/*
 Scenario('form filling', ({ I, homePage, authPage, createAccountPage, myAccountPage }) => {
     homePage.openStore();
     homePage.clickSignIn();
@@ -29,4 +30,28 @@ Scenario('form filling', ({ I, homePage, authPage, createAccountPage, myAccountP
     myAccountPage.seeMyAccount();
     pause();
     
+});
+*/
+
+Scenario('choose a product', ({ I, homePage, authPage, createAccountPage, myAccountPage }) => {
+    homePage.openStore();
+    homePage.clickSignIn();
+    const currentEmail = (Date.now() + '@test.com');
+    authPage.fillNewUserEmail(currentEmail);
+    authPage.clickCreateAccount();
+    createAccountPage.fillNewUserForm(user);
+    let currentUser = Object.assign({email: currentEmail}, user);
+    myAccountPage.seeMyAccount();
+    authPage.clickLogoutButton();
+    authPage.waitForSignInFormLoad();
+    authPage.fillExistUserEmail(currentUser.email);
+    authPage.fillExistUserPassword(currentUser.password);
+    authPage.clickSignInButton();
+    myAccountPage.seeMyAccount();
+    I.seeElement('#block_top_menu');
+    I.seeElement('#block_top_menu a[title="T-shirts"]');
+    I.click('#block_top_menu a[title="T-shirts"]');
+    I.waitForVisible();
+    I.waitForVisible(this.newUserEmailInput);
+    pause();
 });
